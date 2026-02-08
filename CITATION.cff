@@ -1,0 +1,22 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite the original paper."
+title: "Inexact Predictor Feedback for Multi-Input Nonlinear Systems — Reproduction"
+type: software
+authors:
+  - family-names: "Kado"
+    given-names: "Kenshin"
+license: MIT
+repository-code: "https://github.com/KK1182112KK/fang-2024-reproduction"
+preferred-citation:
+  type: article
+  authors:
+    - family-names: "Fang"
+      given-names: "Qin"
+    - family-names: "Zhang"
+      given-names: "Zhengqiang"
+  title: "Inexact predictor feedback for multi-input nonlinear systems with distinct input delays"
+  journal: "Automatica"
+  year: 2024
+  volume: 159
+  start: 111399
+  doi: "10.1016/j.automatica.2023.111399"
