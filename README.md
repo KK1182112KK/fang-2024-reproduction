@@ -1,77 +1,41 @@
-# Inexact Predictor Feedback for Multi-Input Nonlinear Systems
-### Reproduction of Fang & Zhang (Automatica, 2024)
+# Fang & Zhang (2024): equation-linked numerical reproduction
 
-[![Python Tests](https://github.com/KK1182112KK/fang-2024-reproduction/actions/workflows/python-ci.yml/badge.svg)](https://github.com/KK1182112KK/fang-2024-reproduction/actions/workflows/python-ci.yml)
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+**Reproduction implementation and verification project: Kenshin Kotari.** The original model, inexact-predictor design and theorems are Qin Fang and Zhengqiang Zhang's. Development and documentation were AI-assisted. [CITATION.cff](CITATION.cff) cites this software separately from the source paper.
 
-## Overview
+**Source [F24]:** *Inexact predictor feedback for multi-input nonlinear systems with distinct input delays*, Automatica 159 (2024), 111399, DOI [10.1016/j.automatica.2023.111399](https://doi.org/10.1016/j.automatica.2023.111399). References use the nine-page published paper: predictor **(2)–(3), p. 2**, numerical example **(35)–(40), p. 5**, Figs. **1–8, pp. 5–6**.
 
-This repository reproduces the numerical example from Fang & Zhang (2024), which proposes **inexact predictor feedback** for multi-input nonlinear systems with distinct unknown input delays. Instead of requiring one predictor per input channel, a single predictor with a fixed constant horizon D0 robustly compensates all delays simultaneously.
+## Equations and measured outcomes
 
-## Key Results
+All three existing solvers advance physical equations **(35)–(36)**. The predictor is freshly computed using **(3)** and feedback **(39)–(40)**, not an autonomous stable target trajectory. This audit retains the original Euler and nearest-grid history approximations and does not claim exact continuous-time reproduction.
 
-| Scenario | Final |x(t_end)| | Behavior |
-|----------|--------------------:|----------|
-| Inexact predictor (D0=0.45) | ~1e-4 | Exponential convergence |
-| Without compensation | Overflow | Divergent |
-| Delay-free baseline | ~1e-5 | Exponential convergence |
+| Scenario | Source | Recorded norm(x(10)), dt=0.001 | Interpretation |
+|---|---|---:|---|
+| Inexact predictor D0=0.45 | **(3), (35)–(36), (39)–(40)**; Figs. 1–2 | **0.0154599105** | Much smaller than the uncompensated response, but not the old README's approximately 1e-4. |
+| No delay compensation | **(35)–(38)**; Figs. 3–4 | **23432.2793** | Large growth; completed T=10 with finite arrays, no overflow/early stop in this run. |
+| Delay-free baseline | **(35)–(38)** with D1=D2=0; Figs. 5–6 | **0.000294936260** | Small finite-time residual, not the old approximately 1e-5. |
 
-## Methods
+[Full equation-to-code map and all nine measured runs](docs/REPRODUCTION_REPORT.md) · [Measured CSV](results/reporting-audit/summary.csv)
 
-**System** (Eq. 35-36): 2-input nonaffine nonlinear system with delays D1=0.4, D2=0.5
+The audit also retains dt=0.002 and 0.0005 predictor runs and a five-horizon comparison at dt=0.002. At D0=0.5 that ten-second comparison ends at norm 1.31431731; it is not reported as universally small-residual convergence. A finite trajectory or fitted decay trend does not prove exponential stability or theorem applicability.
 
-**Inexact predictor**: Fixed horizon D0=0.45, predictor ODE integrated from t-D0 to t using stored control history. Feedback: u_i(t) = -[kp_i, kd_i] * P(t)
+## Re-run and inspect evidence
 
-**Key equation**: P(theta) = x(t) + integral from t-D0 to theta of f(P(s), u1(s), u2(s)) ds
+[Open the audit notebook in Colab](https://colab.research.google.com/github/KK1182112KK/fang-2024-reproduction/blob/main/python/notebook.ipynb)
 
-**Solver**: Forward Euler, dt=0.001, validated with O(dt) convergence order analysis.
-
-## Quick Start
-
-### MATLAB
-```matlab
-cd matlab
-run('run_all.m')         % simulation + figures
-run('run_all.m', 'test') % validation tests
-```
-
-### Python
 ```bash
-pip install -r python/requirements.txt
-python python/run_all.py              # simulation
-python python/run_all.py --mode test  # validation tests
-python python/run_all.py --mode fig   # generate figures
+pip install numpy scipy matplotlib pytest
+python python/run_reporting_audit.py
+python -m pytest python/tests -q
 ```
 
-## Validation
+The runner regenerates all nine full trajectory CSVs, per-case logs, endpoints, parameters and source/environment records. All cases completed locally and in the recorded [GitHub Actions audit](https://github.com/KK1182112KK/fang-2024-reproduction/actions/runs/34175324683). Full run JSON and trajectories are in that artifact, which expires after 30 days; committed summaries and the runner remain available.
 
-| Test | Description | Result |
-|------|-------------|--------|
-| Convergence | x(t) -> 0 under predictor feedback | Pass |
-| Divergence | Uncompensated system diverges | Pass |
-| Predictor accuracy | P(0) matches independent integration | Pass |
-| Convergence order | O(dt) verified across 4 step sizes | Pass |
-| Exponential decay | log(norm(x)) has negative slope | Pass |
-| D0 sweep | D0 in {0.4, 0.42, 0.45, 0.48, 0.5} all converge | Pass |
+**22 existing Python tests passed**, with assertions unchanged. [Raw test log](results/reporting-audit/tests.log) · [Test record](results/reporting-audit/test-results.json) · [Source/environment provenance](results/reporting-audit/provenance.json).
 
-## Report
+Those tests do not certify the old README's stronger claims. Default terminal tests use **0.1**, and the legacy D0 sweep uses **T=30 with threshold 1.0**, not this audit's T=10. Solver baseline: `c4ad9bf`; audit head: `4823db9`; test-merge checkout: `03da81b918f2e9b9b0ca27390ea96fcef2ec7ee0`.
 
-See [`docs/report.tex`](docs/report.tex) for the full technical report.
+MATLAB source is retained but **was not executed by this audit**. The audit notebook runs the same declared cases rather than repeating the old unchecked narrative. The report replaces unverified all-figures-match and overflow claims, without modifying the solvers to obtain favorable numbers.
 
-## Citation
+[Source specification](docs/SPEC.md) · [Actual numerical methods](docs/METHODS.md) · [Reporting standard](docs/REPORTING_STANDARD.md) · [Related reproduction projects](https://github.com/KK1182112KK/krstic-2016-reproduction)
 
-```bibtex
-@article{FangZhang2024,
-  author  = {Qin Fang and Zhengqiang Zhang},
-  title   = {Inexact predictor feedback for multi-input nonlinear systems with distinct input delays},
-  journal = {Automatica},
-  year    = {2024},
-  volume  = {159},
-  pages   = {111399},
-  doi     = {10.1016/j.automatica.2023.111399}
-}
-```
-
-## License
-
-This project is licensed under the MIT License -- see [LICENSE](LICENSE) for details.
+Implementation code remains under the existing [MIT license](LICENSE); paper models, theorems, figures and authorship remain separately attributed.
