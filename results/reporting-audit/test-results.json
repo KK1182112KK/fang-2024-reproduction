@@ -1,0 +1,11 @@
+{
+  "ci_run": 34175324683,
+  "tests": 22,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "test_seconds": 629.968,
+  "junit_sha256": "a4a236f0e126a5f8d785ef926672441685a26de7554fbc0f9dc6608074c4e011",
+  "assertions_changed": false,
+  "matlab_tested": false
+}

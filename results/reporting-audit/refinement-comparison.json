@@ -1,0 +1,7 @@
+{
+  "metric": "max componentwise state difference from linearly interpolated finest run; not an exact-solution error",
+  "case_indices": [0, 1, 2],
+  "steps": [0.002, 0.001, 0.0005],
+  "max_state_differences_to_finest": [0.031746558848897474, 0.01085891373515911],
+  "reference_is_independent_solver": false
+}

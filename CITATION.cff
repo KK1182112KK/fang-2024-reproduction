@@ -1,22 +1,23 @@
 cff-version: 1.2.0
-message: "If you use this software, please cite the original paper."
-title: "Inexact Predictor Feedback for Multi-Input Nonlinear Systems — Reproduction"
+message: "Cite this reproduction software separately from the original paper listed in references."
+title: "Fang and Zhang 2024: Equation-Linked Numerical Reproduction and Verification"
 type: software
 authors:
-  - family-names: "Kado"
+  - family-names: "Kotari"
     given-names: "Kenshin"
 license: MIT
 repository-code: "https://github.com/KK1182112KK/fang-2024-reproduction"
-preferred-citation:
-  type: article
-  authors:
-    - family-names: "Fang"
-      given-names: "Qin"
-    - family-names: "Zhang"
-      given-names: "Zhengqiang"
-  title: "Inexact predictor feedback for multi-input nonlinear systems with distinct input delays"
-  journal: "Automatica"
-  year: 2024
-  volume: 159
-  start: 111399
-  doi: "10.1016/j.automatica.2023.111399"
+abstract: "Independent numerical implementation and equation-linked audit. Original theory is credited to Qin Fang and Zhengqiang Zhang. Development and documentation were AI-assisted."
+references:
+  - type: article
+    authors:
+      - family-names: "Fang"
+        given-names: "Qin"
+      - family-names: "Zhang"
+        given-names: "Zhengqiang"
+    title: "Inexact predictor feedback for multi-input nonlinear systems with distinct input delays"
+    journal: "Automatica"
+    year: 2024
+    volume: 159
+    start: 111399
+    doi: "10.1016/j.automatica.2023.111399"

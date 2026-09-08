@@ -1,0 +1,25 @@
+{
+  "record_date_utc": "2026-09-08",
+  "solver_baseline_commit": "c4ad9bf05f2f5dff48ef4151a63df76598979180",
+  "audit_runner_head": "4823db91feaacf9809a480817c7815398557c00f",
+  "source_archive_checkout": "03da81b918f2e9b9b0ca27390ea96fcef2ec7ee0",
+  "local_execution_from": "extracted git archive; no .git directory",
+  "local_environment": {"python":"3.13.5","numpy":"2.3.5","scipy":"1.17.0"},
+  "ci_environment": {"python":"3.13.15","numpy":"2.5.3","scipy":"1.18.1"},
+  "audit_workflow_run": 34175324683,
+  "evidence_artifact": 10037262654,
+  "source_sha256": {
+    "python/src/inexact_predictor.py": "4b09d78b077e3f7fe88cc0c01cd426929b6e5da1f0ad65ed64618f6d0ae4c2a1",
+    "python/src/uncompensated.py": "d267caae412ac963b85b729749c043c3fa5bfdb322d9e208dbb3b0e3cb686135",
+    "python/src/delay_free.py": "505592eb3970da543160ea0f674017e862550f4587df0754f66805ee271015cf"
+  },
+  "all_numerical_cases_completed_locally": 9,
+  "all_numerical_cases_completed_in_ci": 9,
+  "max_local_ci_terminal_norm_difference": 1.734723475976807e-18,
+  "solver_source_modified": false,
+  "test_assertions_modified": false,
+  "paper_figures_digitized": false,
+  "matlab_executed_in_this_audit": false,
+  "raw_output_location": "reporting-evidence artifact; runner regenerates all trajectory CSVs, logs and runs.json",
+  "artifact_retention_days": 30
+}
