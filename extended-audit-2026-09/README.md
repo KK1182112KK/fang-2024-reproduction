@@ -17,7 +17,7 @@ python -m pytest -q test_audit.py
 python extract_figures.py --pdf YOUR_PDF
 ```
 
-[Compact main summary](results/summary.json) | [continuous/local-stability summary](continuous_results/summary.json) | [spectrum evidence](continuous_results/spectrum.json) | [figure comparison metrics](figure_audit/comparison.json) | [publication provenance](PUBLICATION.md)
+[Compact main metrics](results/key_metrics.json) | [independent checks](results/checks.json) | [continuous/local-stability summary](continuous_results/summary.json) | [spectrum evidence](continuous_results/spectrum.json) | [figure comparison metrics](figure_audit/comparison.json) | [publication provenance](PUBLICATION.md)
 
 ## Main measured conclusion
 
