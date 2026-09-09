@@ -1,0 +1,16 @@
+{
+  "startup_P_DOP853": [1.5388873889050614, 1.396880783159168],
+  "startup_U_DOP853": [-11.601066082511025, -29.357681720642294],
+  "endpoint_identity": "dP/dt=f(P,U(t))+Phi*(dx/dt-f(x,U(t-D0)))",
+  "manufactured_identity_defects": [
+    {"fd_step": 0.001, "max_abs_defect": 3.180826559368022e-07},
+    {"fd_step": 0.0005, "max_abs_defect": 7.952083980189428e-08},
+    {"fd_step": 0.00025, "max_abs_defect": 1.9880907919933577e-08}
+  ],
+  "equal_delay_sampled_prediction_max_error": 1.6986412276764895e-14,
+  "refinement": [
+    {"dt": 0.002, "max_componentwise_difference_to_h000025": 0.03613305974188635},
+    {"dt": 0.001, "max_componentwise_difference_to_h000025": 0.015950968946943856},
+    {"dt": 0.0005, "max_componentwise_difference_to_h000025": 0.005317140296917887}
+  ]
+}
