@@ -1,0 +1,16 @@
+{
+  "A": [[0,1],[0,1]],
+  "B1K1": [[0,0],[-6,-10]],
+  "B2K2": [[0,0],[-10,-10]],
+  "formula": "det(sI-A-C1-C2-exp(A*D0)*(C1*(exp(-sD1)-exp(-sD0))+C2*(exp(-sD2)-exp(-sD0))))=0",
+  "D0": 0.45,
+  "D1": 0.4,
+  "D2": 0.5,
+  "mpmath_decimal_digits": 70,
+  "roots": [
+    {"real":"0.6821018133450062411967153519679412067069","imag":"53.14886591907897282156411074721830439904","determinant_residual":"0","original_plant_and_predictor_eigenmode_residual":"4.4958427e-70"},
+    {"real":"0.6067235394192813229683557709284937937237","imag":"39.44844792249732506237751796433499480688","determinant_residual":"1.8670646e-67","original_plant_and_predictor_eigenmode_residual":"8.6404656e-69"},
+    {"real":"-0.01369341982896738833650745878560209975029","imag":"25.98687098865623878010383741828904837004","determinant_residual":"2.3820872e-68","original_plant_and_predictor_eigenmode_residual":"2.216404e-69"}
+  ],
+  "scope": "Local linearization at the origin, printed Section 6 parameters; not a refutation of the conditional small-mismatch theorem; not a complete spectrum search."
+}

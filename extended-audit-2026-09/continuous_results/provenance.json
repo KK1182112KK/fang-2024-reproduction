@@ -1,0 +1,7 @@
+{
+  "source_sha256": "80991625d641e386c4e2b828ff7dccb2899f30129ffa74f2d4069e511ebda2f1",
+  "python": "3.13.5",
+  "numpy": "2.3.5",
+  "execution": "Local container, actually executed",
+  "method": "Independent continuous-feedback discretization and local spectrum audit. Physical DDE: RK4 using piecewise-linear past commands; predictor endpoint solved by fixed point iteration; no future physical state or independent target generates x."
+}
