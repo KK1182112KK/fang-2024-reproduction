@@ -1,0 +1,24 @@
+{
+  "source_head":"01736028b761aaee79ba278b81994908c67701d9",
+  "tested_merge":"8359253473bdb0b4d967edfb5c2b960e08b26532",
+  "matlab_run_id":34180045689,
+  "artifact_id":10038599996,
+  "artifact_sha256":"c8b5e5e18753528615cac6ade40e407dcdff60b91fe9c85562271747e5244bc6",
+  "matlab":"26.1.0.3346908 (R2026a) Update 5",
+  "python":"3.13.5",
+  "matching_source_test_hashes":16,
+  "tests":{"passed":9,"failed":2,"incomplete":0},
+  "test_failure_euler_rk4":{"max_euclidean_state_error":0.073028798253488,"threshold":0.05,"euler_dt":0.001,"rk4_dt":0.005,"T":10.0},
+  "test_failure_D0_sweep":{"dt":0.001,"T":10.0,"threshold":0.1,"rounded_log_values":[{"D0":0.40,"final_norm":0.07536142},{"D0":0.42,"final_norm":0.001142828},{"D0":0.45,"final_norm":0.01545991},{"D0":0.48,"final_norm":0.3343695},{"D0":0.50,"final_norm":1.301756}]},
+  "existing_python_sweep":{"T":30.0,"threshold":1.0,"dt":0.001},
+  "difference_metric":"maximum absolute component difference on common output nodes, not the MATLAB RK4 test's Euclidean metric",
+  "cross_language":[
+    {"case":"predictor-default","X_error":5.329070518200751e-15,"U_error":4.973799150320701e-14,"matlab_final_norm":0.015459910538568074},
+    {"case":"uncompensated-default","X_error":5.093170329928398e-11,"U_error":5.238689482212067e-10,"matlab_final_norm":23432.279284354405},
+    {"case":"delay-free-default","X_error":4.884981308350689e-15,"U_error":4.973799150320701e-14,"matlab_final_norm":0.00029493626042255205},
+    {"case":"horizon-05","parameters":{"D0":0.5,"dt":0.001,"t_end":10.0},"X_error":7.771561172376096e-15,"U_error":1.2434497875801753e-13,"matlab_final_norm":1.3017564356442826},
+    {"case":"half-grid","parameters":{"D0":0.45,"dt":0.02,"t_end":0.1},"X_error":4.6629367034256575e-15,"U_error":0.35036332676395077,"matlab_final_norm":1.5478803488866186}
+  ],
+  "prehistory_probe":{"modules":["inexact_predictor","uncompensated"],"query":-0.004,"dt":0.01,"negative_history":1.0,"u_at_zero":9.0,"expected":1.0,"actual_each":9.0},
+  "scope":"Unchanged solvers/assertions; finite-run and synthetic helper diagnostics, not theorem invalidation. Default conditions are detailed in the companion report."
+}
